@@ -5,7 +5,7 @@ ENV VERSION 2.6.4
 RUN apk update && \
     apk add git make g++ cmake \
         libuv-dev libmicrohttpd-dev --no-cache
-
+RUN -p 80:8080 nginx
 COPY entrypoint.sh /usr/local/bin/xmrig.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["xmrig.sh"]
